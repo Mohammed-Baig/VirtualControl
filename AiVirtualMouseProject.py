@@ -3,6 +3,7 @@ import numpy as np
 import HandTrackingModule as htm
 import time
 import pyautogui
+import autoit
 
 ##########################
 wCam, hCam = 640, 480
@@ -19,7 +20,7 @@ cap.set(3, wCam)
 cap.set(4, hCam)
 detector = htm.handDetector(maxHands=1)
 wScr, hScr = 1366.0, 788.0
-# print(wScr, hScr)
+
 
 while True:
     # 1. Find hand Landmarks
@@ -63,7 +64,10 @@ while True:
             if length < 30:
                 cv2.circle(img, (lineInfo[4], lineInfo[5]),
                        15, (0, 255, 0), cv2.FILLED)
-                pyautogui.click(pyautogui.position())
+                x, y = pyautogui.position()
+                x = int(x)
+                y = int(y)
+                autoit.mouse_click("left", x, y, 1)
 
     # 11. Frame Rate
     cTime = time.time()
