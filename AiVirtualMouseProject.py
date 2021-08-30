@@ -51,6 +51,7 @@ while True:
 
             # 7. Move Mouse
             mouse.move(wScr-clocX, clocY, absolute=True, duration=0.0)
+            #pyautogui.moveTo(wScr - clocX, clocY)
             cv2.circle(img, (x1, y1), 15, (255, 0, 255), cv2.FILLED)
             plocX, plocY = clocX, clocY
 
