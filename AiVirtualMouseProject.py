@@ -4,6 +4,7 @@ import HandTrackingModule as htm
 import time
 import pyautogui
 import autoit
+import mouse
 
 ##########################
 wCam, hCam = 640, 480
@@ -49,7 +50,7 @@ while True:
             clocY = plocY + (y3 - plocY) / smoothening
 
             # 7. Move Mouse
-            pyautogui.moveTo(wScr - clocX, clocY)
+            mouse.move(wScr-clocX, clocY, absolute=True, duration=0.0)
             cv2.circle(img, (x1, y1), 15, (255, 0, 255), cv2.FILLED)
             plocX, plocY = clocX, clocY
 
@@ -67,7 +68,7 @@ while True:
                 x, y = pyautogui.position()
                 x = int(x)
                 y = int(y)
-                autoit.mouse_click("left", x, y, 1)
+                autoit.mouse_click("right", x, y, 1)
 
     # 11. Frame Rate
     cTime = time.time()
